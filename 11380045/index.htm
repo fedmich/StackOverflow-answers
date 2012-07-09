@@ -1,0 +1,98 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+// id_changer
+
+<script type="text/javascript">
+	$.fn.id_changer = function(new_id) {
+	  return this.each(function(){
+	    $(this).find('input').each(function(){
+			var ob = $(this);
+			ob.attr('id',   this.id.replace(/_\d$/, '_' + new_id));
+			ob.attr('name', this.name.replace(/_\d$/, '_' + new_id));        	
+	    });
+      });
+    };
+</script>
+
+
+<form method="post" action="#" class="inlineForm" enctype="multipart/form-data">
+	<div class="repeatingSection">
+		<a href="#" class="buttonGray buttonRight deleteFight">Delete</a>
+		<input type="hidden" name="fighter_a_id_1" id="fighter_a_id_1" value="" />
+		<input type="hidden" name="fighter_b_id_1" id="fighter_b_id_1" value="" />
+		<input type="hidden" name="winner_id_1" id="winner_id_1" value="" />
+		<div class="formRow">
+			<label for="fighter_a_1">Fighters</label>
+			<input type="text" name="fighter_a_1" id="fighter_a_1" value="" /> <span class="formTextExtraCenter">vs</span> <input type="text" name="fighter_b_1" id="fighter_b_1" value="" />
+		</div>
+		<div class="formRow">
+			<label for="fighter_a_pay_1">Fighter Pay $</label>
+			<input type="text" name="fighter_a_pay_1" id="fighter_a_pay_1" value="" /> <span class="formTextExtraCenter">vs</span> <input type="text" name="fighter_b_pay_1" id="fighter_b_pay_1" value="" />
+		</div>
+		<div class="formRow">
+			<label for="winner_1">Winner</label>
+			<input type="text" name="winner_1" id="winner_1" value="" />
+		</div>
+		<div class="formRow">
+			<label for="method_1">Method</label>
+			<input type="text" name="method_1" id="method_1" value="" />
+		</div>
+		<div class="formRow">
+			<label for="method_type_1">Method Type</label>
+			<input type="text" name="method_type_1" id="method_type_1" value="" />
+		</div>
+		<div class="formRow">
+			<label for="round_1">Round</label>
+			<input type="text" name="round_1" id="round_1" class="fieldSmall" value="" />
+		</div>
+		<div class="formRow">
+			<label for="time_1">Time</label>
+			<input type="text" name="time_1" id="time_1" class="fieldSmall" value="" />
+		</div>
+		<div class="formRow">
+			<label for="fight_number_1">Fight #</label>
+			<input type="text" name="fight_number_1" id="fight_number_1" class="fieldSmall" value="" />
+		</div>
+	</div>
+	<div class="formRowRepeatingSection">
+			<a href="#" class="buttonGray buttonRight addFight">Add Fight</a>
+		</div>
+	<div class="formRow">
+		<input type="submit" class="submitButton" value="Save Fights" />
+	</div>
+</form>
+
+
+
+
+<script type="text/javascript">
+	$(function() {
+	
+	// Add a new repeating section
+    $('.addFight').click(function(){
+        var lastRepeatingGroup = $('.repeatingSection').last();
+        var cloned = lastRepeatingGroup.clone()
+		
+		//TODO change 3 to a variable later...
+		cloned = cloned.id_changer( 3 );
+		
+		cloned.insertAfter(lastRepeatingGroup);
+        return false;
+    });
+    // Delete a repeating section
+    $('.deleteFight').click(function(){
+        $(this).parent('div').remove();
+        return false;
+    });
+	
+    // Delete a repeating section
+    $('.deleteFight').click(function(){
+        $(this).parent('div').remove();
+        return false;
+    });
+	
+	
+	$('.addFight').click();
+	
+	});	
+</script>
+

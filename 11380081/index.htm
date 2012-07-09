@@ -1,0 +1,17 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+	var ctr = 0;
+	function animate_me(){
+	++ctr;
+	//your code;
+	console.log('animating... #'+ ctr);
+	
+	//setTimeout(animate_me, 6000);
+	setTimeout(animate_me, 1500);
+	}
+
+	$(function() {
+		animate_me();
+	});
+</script>

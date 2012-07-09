@@ -1,0 +1,17 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+
+<input class="dateValue" name="" id="" />
+<input type="submit" value="Submit" />
+
+<script type="text/javascript">
+	$(function() {
+		$('input.dateValue').bind('focusout', function(e) {
+    	if(! this.value.match(/\d{4}$/) ) {
+			console.log('aa');
+        	e.preventDefault();
+			//.attr('value','');
+        	$(this).focus().val('');
+    	}
+		});
+	});
+</script>
