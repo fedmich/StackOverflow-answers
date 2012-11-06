@@ -1,0 +1,26 @@
+<script src="http://jqueryjs.googlecode.com/files/jquery-1.2.6.pack.js" type="text/javascript"></script>
+
+<input type="text" name="s" value="Name" id="s"  tabindex="1" class="default-value" />
+
+<script type="text/javascript">
+	var $j = jQuery;
+	
+	$j('.default-value').each(function() {
+      var default_value = this.value;
+	  $j(this).css('color', '#837D73'); // this could be in the style sheet instead
+      
+	  
+	   $j(this).focus(function() {
+          if(this.value == default_value) {
+              this.value = '';
+              $j(this).css('color', 'black');
+          }
+      });
+      $j(this).blur(function() {
+          if(this.value == '') {
+              $j(this).css('color', '#837D73');
+              this.value = default_value;
+          }
+      });
+	});
+</script>
