@@ -19,20 +19,36 @@
     $parameters = array($_POST["session"]);
     $parameterTypes = 'i';
 
-    // Check whether a specific student was selected
-    if($_POST["student"] != '0') {
-        $where[] = 'sa.StudentId = ?';
-        $parameters[] .= $_POST["student"];
-        $parameterTypes .= 'i';
-    }
+	
+	//check if POST is empty
 
-    // Check whether a specific question was selected
-    // NB: This is not an else if!
-    if($_POST["question"] != '0') {
-        $where[] = 'q.QuestionId = ?';
-        $parameters[] .= $_POST["question"];
-        $parameterTypes .= 'i';
-    }
+	// Check whether a specific student was selected
+	$p_student = empty($_POST["student"])?'':$_POST["student"];
+
+	switch($p_student){
+	case 'All':
+	case '0':
+		//dont' add where filters
+		break;
+	default:
+		$where[] = 'sa.StudentId = ?';
+		$parameters[] .= $_POST["student"];
+		$parameterTypes .= 'i';
+	}
+
+	// Check whether a specific question was selected
+	$p_question = empty($_POST["question"])?'':$_POST["question"];
+
+	switch($p_question){
+	case 'All':
+	case '0':
+		//dont' add where filters
+		break;
+	default:
+		$where[] = 'q.questionId = ?';
+		$parameters[] .= $_POST["question"];
+		$parameterTypes .= 'i';
+	}
 
     // If we added to $where in any of the conditionals, we need a WHERE clause in
     // our query
