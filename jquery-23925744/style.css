@@ -1,0 +1,20 @@
+.expander {
+	margin-bottom:20px;
+}
+
+.box{
+	margin-bottom:10px;
+	border:1px solid #666666;
+}
+.box_content{
+	border:1px dashed #E4E4E4;
+}
+.expander h3{
+	cursor:pointer;
+	margin:0;
+	padding:0;
+	background-color:#FF0033;
+}
+.expander .shown h3{
+	background-color:#00CC66;
+}
